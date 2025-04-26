@@ -4,12 +4,14 @@ package com.example.stami_be.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.Date;
+
 @Document(collection = "transaktionen")
 public class Transaktion {
 
     @Id
     private String id;
-    private String datum;
+    private Date datum;
     private String kaufVerkauf;
     private String ticker;
     private int anzahl;
@@ -17,8 +19,8 @@ public class Transaktion {
 
     public Transaktion() {}
 
-    public Transaktion(String kaufVerkauf, String ticker, int anzahl, double preis) {
-        //this.datum = datum;
+    public Transaktion(Date datum, String kaufVerkauf, String ticker, int anzahl, double preis) {
+        this.datum = datum;
         this.kaufVerkauf = kaufVerkauf;
         this.ticker = ticker;
         this.anzahl = anzahl;
@@ -27,13 +29,13 @@ public class Transaktion {
 
     // Getter und Setter
     public String getId() { return id; }
-    public String getDatum() { return datum; }
+    public Date getDatum() { return datum; }
     public String getKaufVerkauf() { return kaufVerkauf; }
     public String getTicker() { return ticker; }
     public int getAnzahl() { return anzahl; }
     public double getPreis() { return preis; }
 
-    public void setDatum(String datum) { this.datum = datum; }
+    public void setDatum(Date datum) { this.datum = datum; }
     public void setKaufVerkauf(String kaufVerkauf) { this.kaufVerkauf = kaufVerkauf; }
     public void setTicker(String ticker) { this.ticker = ticker; }
     public void setAnzahl(int anzahl) { this.anzahl = anzahl; }

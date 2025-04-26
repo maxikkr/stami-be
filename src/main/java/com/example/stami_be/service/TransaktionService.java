@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -28,13 +29,13 @@ public class TransaktionService {
         for (Row row : sheet) {
             if (row.getRowNum() == 0) continue; // Kopfzeile überspringen
 
-            //String datum = row.getCell(0).getStringCellValue();
+            Date datum = row.getCell(0).getDateCellValue();
             String kaufVerkauf = row.getCell(1).getStringCellValue();
             String ticker = row.getCell(2).getStringCellValue();
             int anzahl = (int) row.getCell(3).getNumericCellValue();
             double preis = row.getCell(4).getNumericCellValue();
 
-            Transaktion t = new Transaktion(kaufVerkauf, ticker, anzahl, preis);
+            Transaktion t = new Transaktion(datum, kaufVerkauf, ticker, anzahl, preis);
             transaktionen.add(t);
         }
 
