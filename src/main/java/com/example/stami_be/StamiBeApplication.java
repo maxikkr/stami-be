@@ -1,3 +1,4 @@
+//Startet die Applikation
 package com.example.stami_be;
 
 import org.springframework.boot.SpringApplication;
